@@ -1,0 +1,114 @@
+{
+  "name": "pwr",
+  "version": "0.0.1",
+  "description": "⚡ The (cheated) interactive CLI for npm",
+  "keywords": [
+    "CLI",
+    "tool",
+    "workflow",
+    "security",
+    "code quality",
+    "productivity",
+    "convenience"
+  ],
+  "homepage": "https://github.com/jesusprubio/pwd",
+  "bugs": {
+    "url": "https://github.com/jesusprubio/pwd/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Jesus Rubio",
+    "url": "http://jesusprubio.dev"
+  },
+  "files": [
+    "bin",
+    "cfg.json"
+  ],
+  "bin": {
+    "pwr": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jesusprubio/pwd/pwr.git"
+  },
+  "scripts": {
+    "start": "node bin",
+    "audit": "audit-ci --moderate",
+    "deps": "depcheck --ignores=eslint-config-airbnb-base,eslint-config-prettier,eslint-plugin-import,lint-staged,np,prettier,copy-github-labels-cli,del-nm-cli,emma-cli,fast-cli,http-server,internal-ip-cli,is-online-cli,license-checker,npm-analyze,npm-check,npm-name-cli,ntl,open-editor-cli,public-ip-cli,terminalizer,trevor,vtop,yo",
+    "lint": "eslint .",
+    "pretest": "npm run audit && npm run deps && npm run lint",
+    "test": "nyc ava",
+    "format": "prettier --write '**/*.js'",
+    "precommit": "lint-staged",
+    "release": "np"
+  },
+  "dependencies": {
+    "await-spawn": "^2.1.2",
+    "chalk": "^2.4.2",
+    "copy-github-labels-cli": "^1.0.0",
+    "del-nm-cli": "^2.2.3",
+    "depcheck": "^0.7.2",
+    "emma-cli": "jesusprubio/emma-cli#master",
+    "esc-exit": "^2.0.1",
+    "fast-cli": "^2.3.0",
+    "http-server": "^0.11.1",
+    "internal-ip-cli": "^1.0.0",
+    "is-online-cli": "^4.0.0",
+    "license-checker": "^25.0.1",
+    "np": "^4.0.2",
+    "npm-analyze": "^1.1.0",
+    "npm-check": "^5.9.0",
+    "npm-name-cli": "^2.5.0",
+    "ntl": "^3.2.3",
+    "nyc": "^13.3.0",
+    "open-editor-cli": "^1.0.0",
+    "p-map-series": "^2.0.0",
+    "prompts": "^2.0.4",
+    "public-ip-cli": "^2.0.0",
+    "terminal-link": "^1.2.0",
+    "terminalizer": "^0.6.1",
+    "trevor": "^2.4.0",
+    "vtop": "^0.6.1",
+    "yo": "^2.0.5"
+  },
+  "devDependencies": {
+    "audit-ci": "^1.4.1",
+    "ava": "^1.3.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "strict": [
+        "off"
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}

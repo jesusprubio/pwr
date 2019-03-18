@@ -1,0 +1,125 @@
+{
+  "scripts": {
+    "title": "Project scripts",
+    "pkg": "ntl",
+    "comm": { "bin": "ntl" }
+  },
+  "install": {
+    "title": "Find/install packages",
+    "pkg": "emma-cli",
+    "comm": { "bin": "emma" }
+  },
+  "publish": {
+    "title": "Publish to npm",
+    "pkg": "np",
+    "comm": [
+      { "bin": "npm", "args": ["pack", "--dry-run"] },
+      { "bin": "npm-analyze" },
+      { "bin": "np" }
+    ]
+  },
+  "check": {
+    "title": "Check/update dependencies",
+    "pkg": "npm-check",
+    "comm": [
+      { "bin": "npm-check", "args": ["-u", "--ignore=dist/*"] },
+      { "bin": "npm", "args": "audit" }
+    ]
+  },
+  "name": {
+    "title": "Check name available",
+    "pkg": "npm-name",
+    "param": {
+      "type": "text",
+      "name": "name",
+      "message": "package name",
+      "initial": "pwr"
+    },
+    "comm": { "bin": "npm-name", "args": "NAME" }
+  },
+  "init": {
+    "title": "Start a new project",
+    "pkg": "generator-nm",
+    "comm": [
+      { "bin": "yo", "args": "nm" },
+      { "bin": "open-editor", "args": "." }
+    ]
+  },
+  "clean": {
+    "title": "Clean lock file/node_modules",
+    "pkg": "del-nm-cli",
+    "comm": [
+      { "bin": "del-nm" },
+      { "bin": "npm", "args": "i" }
+    ]
+  },
+  "coverage": {
+    "title": "Tests with code coverage",
+    "pkg": "nyc",
+    "comm": { "bin": "nyc", "args": ["npm", "test"] }
+  },
+  "ci": {
+    "title": "Tests in local Travis",
+    "pkg": "trevor",
+    "comm": { "bin": "trevor" }
+  },
+  "analysis": {
+    "title": "Dependencies analysis",
+    "pkg": "npm-analyze",
+    "comm": { "bin": "npm-analyze", "args": ["--deps"] }
+  },
+  "license": {
+    "title": "Dependencies licenses",
+    "pkg": "license-checker",
+    "comm": { "bin": "license-checker", "args": "--production" }
+  },
+  "top": {
+    "title": "System monitoring",
+    "pkg": "vtop",
+    "comm": { "bin": "vtop" }
+  },
+  "network": {
+    "title": "Network information",
+    "pkg": "fast-cli",
+    "comm": [
+      { "bin": "is-online" },
+      { "bin": "internal-ip" },
+      { "bin": "public-ip" },
+      { "bin": "fast", "args": "--upload" }
+    ]
+  },
+  "labels": {
+    "title": "Add GitHub labels",
+    "pkg": "copy-github-labels-cli",
+    "param": [
+      {
+        "type": "text",
+        "name": "token",
+        "message": "personal access token"
+      },
+      {
+        "type": "text",
+        "name": "to",
+        "message": "repo to change",
+        "initial": "username/repo"
+      },
+      {
+        "type": "text",
+        "name": "from",
+        "message": "repo to get the labels",
+        "initial": "jesusprubio/pwr"
+      }
+    ],
+    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] }
+  },
+  "record": {
+    "title": "Record terminal",
+    "pkg": "terminalizer",
+    "comm": { "bin": "terminalizer", "args": ["record", "demo"] }
+  },
+  "http": {
+    "title": "Start HTTP server",
+    "pkg": "http-server",
+    "comm": { "bin": "http-server" }
+  }
+}
