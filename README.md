@@ -1,5 +1,5 @@
 # power
-b>:zap: The (cheated) interactive CLI for [npm](https://www.npmjs.com).
+:zap: The (cheated) interactive CLI for [npm](https://www.npmjs.com).
 
 <div align="center">
 	<p><img src="https://raw.githubusercontent.com/jesusprubio/pwr/master/artifacts/demo.gif" alt="demo"></p>
