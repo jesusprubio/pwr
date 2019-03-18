@@ -68,6 +68,7 @@
     "terminal-link": "^1.2.0",
     "terminalizer": "^0.6.1",
     "trevor": "^2.4.0",
+    "validate-npm-package-name": "^3.0.0",
     "vtop": "^0.6.1",
     "yo": "^2.0.5"
   },
