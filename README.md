@@ -1,10 +1,10 @@
 # power
 
 <div align="center">
+    <p><b>:zap: The (cheated) interactive CLI for npm</b></p>
 	<p>
         <img src="https://raw.githubusercontent.com/jesusprubio/pwr/master/artifacts/demo.gif" alt="demo">
 	</p>
-    <p><b>:zap: The (cheated) interactive CLI for npm</b></p>
 	<p>
 		<sub>:gift: Ping me on <a href="https://twitter.com/FreestyleEng"><code>Twitter</code></a> if you like this project</sub>
 	</p>
