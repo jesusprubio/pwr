@@ -1,6 +1,6 @@
 {
   "name": "pwr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "⚡ The (cheated) interactive CLI for npm",
   "keywords": [
     "CLI",
