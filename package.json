@@ -22,7 +22,7 @@
   },
   "files": [
     "bin",
-    "cfg.json"
+    "tools.json"
   ],
   "bin": {
     "pwr": "./bin/index.js"
