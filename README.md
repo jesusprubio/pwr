@@ -9,7 +9,7 @@
 
 <div align="center">
 	<p><img src="https://raw.githubusercontent.com/jesusprubio/pwr/master/artifacts/demo.gif" alt="demo"></p>
-	<p><sub>:gift: Ping me on <a href="https://twitter.com/FreestyleEng"><code>Twitter</code></a> if you like this project</sub></p>
+	<p><sub>:gift: Ping me on <a href="https://twitter.com/jesusprubio"><code>Twitter</code></a> if you like this project</sub></p>
 </div>
 
 ## Install & use
