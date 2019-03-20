@@ -16,12 +16,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### 🎉 Added
+- Initial features.
+- Script to print info about the install
+
+### ✏️ Changed
 - Improvements in documentation
 
 ## [0.1.1] - 2019-18-02
 
 ### 🐛 Fixed
 - Lost dependencies
+
+### ✏️ Changed
+- Improvements in documentation
 
 ## [0.1.0] - 2019-18-02
 
