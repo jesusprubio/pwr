@@ -16,10 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.1.0]
+- Improvements in documentation
+
+## [0.1.1] - 2019-18-02
+
+### 🐛 Fixed
+- Lost dependencies
+
+## [0.1.0] - 2019-18-02
 
 ### 🎉 Added
 - Initial features.
 
-[unreleased]: https://github.com/jesusprubio/pwd/compare/0.1.0...HEAD
-[0.1.0]: https://github.com/jesusprubio/pwd/compare/3eeb67bd082b65c44b0c22919a176797a5bc866f...0.1.0
+[unreleased]: https://github.com/jesusprubio/pwr/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/jesusprubio/pwr/compare/b6e5a5ec3e6657dac925aeec3cbad9ae91512e4c...0.1.0
