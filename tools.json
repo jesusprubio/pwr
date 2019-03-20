@@ -19,7 +19,7 @@
     ]
   },
   "check": {
-    "title": "Check/update dependencies",
+    "title": "Dependency check/update",
     "pkg": "npm-check",
     "comm": [
       { "bin": "npm-check", "args": ["-u", "--ignore=dist/*"] },
@@ -64,12 +64,12 @@
     "comm": { "bin": "trevor" }
   },
   "analysis": {
-    "title": "Dependencies analysis",
+    "title": "Dependency analysis",
     "pkg": "npm-analyze",
     "comm": { "bin": "npm-analyze", "args": ["--deps"] }
   },
   "license": {
-    "title": "Dependencies licenses",
+    "title": "Dependency licenses",
     "pkg": "license-checker",
     "comm": { "bin": "license-checker", "args": "--production" }
   },
