@@ -11,9 +11,9 @@
     "productivity",
     "convenience"
   ],
-  "homepage": "https://github.com/jesusprubio/pwd",
+  "homepage": "https://github.com/jesusprubio/pwr",
   "bugs": {
-    "url": "https://github.com/jesusprubio/pwd/issues"
+    "url": "https://github.com/jesusprubio/pwr/issues"
   },
   "license": "MIT",
   "author": {
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jesusprubio/pwd/pwr.git"
+    "url": "https://github.com/jesusprubio/pwr/pwr.git"
   },
   "scripts": {
     "start": "node bin",
@@ -39,15 +39,13 @@
     "pretest": "npm run audit && npm run deps && npm run lint",
     "test": "nyc ava",
     "format": "prettier --write '**/*.js'",
-    "precommit": "lint-staged",
-    "release": "np"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "await-spawn": "^2.1.2",
     "chalk": "^2.4.2",
     "copy-github-labels-cli": "^1.0.0",
     "del-nm-cli": "^2.2.3",
-    "depcheck": "^0.7.2",
     "emma-cli": "jesusprubio/emma-cli#master",
     "esc-exit": "^2.0.1",
     "fast-cli": "^2.3.0",
@@ -74,6 +72,7 @@
   "devDependencies": {
     "audit-ci": "^1.4.1",
     "ava": "^1.3.1",
+    "depcheck": "^0.7.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -91,8 +90,7 @@
     ],
     "env": {
       "es6": true,
-      "node": true,
-      "browser": true
+      "node": true
     },
     "rules": {
       "strict": [
