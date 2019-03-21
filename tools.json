@@ -121,5 +121,24 @@
     "title": "Start HTTP server",
     "pkg": "http-server",
     "comm": { "bin": "http-server" }
+  },
+  "screenshot": {
+    "title": "Take screenshot",
+    "pkg": "puppeteer-cli",
+    "param": [
+      {
+        "type": "text",
+        "name": "url",
+        "message": "url of website to take screenshot"
+      },
+      {
+        "type": "text",
+        "name": "path",
+        "message": "where to save"
+      }
+    ],
+    "comm": [
+      { "bin": "puppeteer", "args": ["screenshot", "URL", "PATH"] }
+    ]
   }
 }
