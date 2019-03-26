@@ -48,7 +48,7 @@
     "chalk": "^2.4.2",
     "copy-github-labels-cli": "^1.0.0",
     "del-nm-cli": "^2.2.3",
-    "emma-cli": "jesusprubio/emma-cli#master",
+    "emma-cli": "^2.0.1",
     "esc-exit": "^2.0.1",
     "fast-cli": "^2.3.0",
     "http-server": "^0.11.1",
