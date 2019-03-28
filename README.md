@@ -13,7 +13,7 @@
 </div>
 
 ## Install & use
-:coffee: Install last [Node.js](https://nodejs.org/download) stable version and:
+:coffee: Install lastest [Node.js](https://nodejs.org/download) stable version and:
 
 ```sh
 npm i -g pwr
