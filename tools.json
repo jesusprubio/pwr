@@ -2,12 +2,23 @@
   "scripts": {
     "title": "Project scripts",
     "pkg": "ntl",
-    "comm": { "bin": "ntl" }
+    "comm": { "bin": "ntl" },
+    "fav": true
   },
   "install": {
     "title": "Find/install packages",
     "pkg": "emma-cli",
-    "comm": { "bin": "emma" }
+    "comm": { "bin": "emma" },
+    "fav": true
+  },
+  "clean": {
+    "title": "Clean lock file/node_modules",
+    "pkg": "del-nm-cli",
+    "comm": [
+      { "bin": "del-nm" },
+      { "bin": "npm", "args": "i" }
+    ],
+    "fav": true
   },
   "publish": {
     "title": "Publish to npm",
@@ -16,7 +27,8 @@
       { "bin": "npm", "args": ["pack", "--dry-run"] },
       { "bin": "npm-analyze" },
       { "bin": "np" }
-    ]
+    ],
+    "fav": true
   },
   "check": {
     "title": "Dependency check/update",
@@ -24,7 +36,8 @@
     "comm": [
       { "bin": "npm-check", "args": ["-u", "--ignore=dist/*"] },
       { "bin": "npm", "args": "audit" }
-    ]
+    ],
+    "fav": true
   },
   "name": {
     "title": "Check name available",
@@ -35,7 +48,8 @@
       "message": "package name",
       "initial": "pwr"
     },
-    "comm": { "bin": "npm-name", "args": "NAME" }
+    "comm": { "bin": "npm-name", "args": "NAME" },
+    "fav": true
   },
   "init": {
     "title": "Start a new project",
@@ -43,14 +57,6 @@
     "comm": [
       { "bin": "yo", "args": "nm" },
       { "bin": "open-editor", "args": "." }
-    ]
-  },
-  "clean": {
-    "title": "Clean lock file/node_modules",
-    "pkg": "del-nm-cli",
-    "comm": [
-      { "bin": "del-nm" },
-      { "bin": "npm", "args": "i" }
     ]
   },
   "coverage": {
@@ -110,7 +116,8 @@
         "initial": "jesusprubio/pwr"
       }
     ],
-    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] }
+    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] },
+    "fav": true
   },
   "record": {
     "title": "Record terminal",
@@ -120,7 +127,8 @@
   "http": {
     "title": "Start HTTP server",
     "pkg": "http-server",
-    "comm": { "bin": "http-server" }
+    "comm": { "bin": "http-server" },
+    "fav": true
   },
   "screenshot": {
     "title": "Take screenshot",

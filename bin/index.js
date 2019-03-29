@@ -25,7 +25,11 @@ const { version } = require('../package.json');
 const tools = require('../tools');
 
 escExit();
-const choices = Object.entries(tools).map(pair => {
+
+const choicesRoot = [];
+const choicesMore = [];
+
+Object.entries(tools).forEach(pair => {
   const info = pair[1];
   const title = chalk.bold(info.title);
   const link = tlink(
@@ -33,13 +37,24 @@ const choices = Object.entries(tools).map(pair => {
     `https://www.npmjs.com/package/${info.pkg}`,
   );
 
-  return {
+  const choice = {
     title: `${title} (${link})`,
     value: pair[0],
   };
+
+  if (info.fav) {
+    choicesRoot.push(choice);
+  } else {
+    choicesMore.push(choice);
+  }
 });
 
-async function main() {
+choicesRoot.push({
+  title: 'More ...',
+  value: 'more',
+});
+
+async function main(choices) {
   const selection = await prompts([
     {
       type: 'select',
@@ -50,6 +65,11 @@ async function main() {
     },
   ]);
   const selected = selection.value;
+
+  if (selected && selected === 'more') {
+    main(choicesMore);
+    return;
+  }
 
   let { param, comm } = tools[selected];
 
@@ -101,7 +121,7 @@ async function main() {
   });
 }
 
-main()
+main(choicesRoot)
   // The CLIs print their own output.
   .then(() => {})
   .catch(() => {});
