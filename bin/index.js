@@ -11,14 +11,12 @@
 
 'use strict';
 
-// const { spawn } = require('child_process')
 const path = require('path');
 
 const escExit = require('esc-exit');
 const prompts = require('prompts');
 const chalk = require('chalk');
 const tlink = require('terminal-link');
-const pMapSeries = require('p-map-series');
 const spawn = require('await-spawn');
 
 const { version } = require('../package.json');
@@ -67,7 +65,7 @@ async function main(choices) {
   const selected = selection.value;
 
   if (selected && selected === 'more') {
-    main(choicesMore);
+    await main(choicesMore);
     return;
   }
 
@@ -87,7 +85,7 @@ async function main(choices) {
 
   const params = await prompts(param);
 
-  await pMapSeries(comm, async command => {
+  comm.forEach(async command => {
     const { bin } = command;
     let { args } = command;
 
