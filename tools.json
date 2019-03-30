@@ -137,12 +137,14 @@
       {
         "type": "text",
         "name": "url",
-        "message": "url of website to take screenshot"
+        "message": "url of website to take screenshot",
+        "initial": "https://github.com/jesusprubio/pwr"
       },
       {
         "type": "text",
         "name": "path",
-        "message": "where to save"
+        "message": "name of the file",
+        "initial": "shot.png"
       }
     ],
     "comm": [
