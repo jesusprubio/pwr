@@ -119,16 +119,16 @@
     "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] },
     "fav": true
   },
-  "record": {
-    "title": "Record terminal",
-    "pkg": "terminalizer",
-    "comm": { "bin": "terminalizer", "args": ["record", "demo"] }
-  },
   "http": {
     "title": "Start HTTP server",
     "pkg": "http-server",
     "comm": { "bin": "http-server" },
     "fav": true
+  },
+  "share": {
+    "title": "Share actual folder online",
+    "pkg": "share-cli",
+    "comm": { "bin": "share", "args": "." }
   },
   "screenshot": {
     "title": "Take screenshot",
