@@ -19,25 +19,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.1.2] - 2019-02-30
 
 ### 🎉 Added
+
 - Script to print info about the install.
 - Section "more" to the menu.
 - Website screenshoot tool support (puppeter).
 
 ### ✏️ Changed
+
 - Improvements in documentation.
 - New emma-cli version (major).
 
 ## [0.1.1] - 2019-02-18
 
 ### 🐛 Fixed
+
 - Lost dependencies.
 
 ### ✏️ Changed
+
 - Improvements in documentation.
 
 ## [0.1.0] - 2019-02-18
 
 ### 🎉 Added
+
 - Initial features.
 
 [unreleased]: https://github.com/jesusprubio/pwr/compare/0.1.2...HEAD
