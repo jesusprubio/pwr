@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.1.2] - 2019-02-30
+## [0.2.0] - 2019-02-30
 
 ### 🎉 Added
 
@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial features.
 
-[unreleased]: https://github.com/jesusprubio/pwr/compare/0.1.2...HEAD
-[0.1.2]: https://github.com/jesusprubio/pwr/compare/0.1.1...0.1.2
+[unreleased]: https://github.com/jesusprubio/pwr/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/jesusprubio/pwr/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/jesusprubio/pwr/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/jesusprubio/pwr/compare/b6e5a5ec3e6657dac925aeec3cbad9ae91512e4c...0.1.0
