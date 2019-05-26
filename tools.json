@@ -25,7 +25,6 @@
     "pkg": "np",
     "comm": [
       { "bin": "npm", "args": ["pack", "--dry-run"] },
-      { "bin": "npm-analyze" },
       { "bin": "np" }
     ],
     "fav": true
@@ -71,8 +70,8 @@
   },
   "analysis": {
     "title": "Dependency analysis",
-    "pkg": "npm-analyze",
-    "comm": { "bin": "npm-analyze", "args": ["--deps"] }
+    "pkg": "npm-consider",
+    "comm": { "bin": "npm-consider", "args": ["install"] }
   },
   "license": {
     "title": "Dependency licenses",
