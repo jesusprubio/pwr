@@ -16,6 +16,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-05-26
+
+### 🎉 Added
+
+### ✏️ Changed
+
+- Improvements and fixes in documentation.
+- npm-consider instead npm-analyze.
+
+### 👾 Security
+
+- Dependencies update.
+
+### ❌ Removed
+
+- Terminalizer due to problems installing in Node.js v12 under GNU/Linux.
+
 ## [0.2.0] - 2019-02-30
 
 ### 🎉 Added
@@ -45,7 +62,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial features.
 
-[unreleased]: https://github.com/jesusprubio/pwr/compare/0.2.0...HEAD
+[unreleased]: https://github.com/jesusprubio/pwr/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/jesusprubio/pwr/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/jesusprubio/pwr/compare/0.1.1...0.2.0
 [0.1.1]: https://github.com/jesusprubio/pwr/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/jesusprubio/pwr/compare/b6e5a5ec3e6657dac925aeec3cbad9ae91512e4c...0.1.0
