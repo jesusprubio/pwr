@@ -1,24 +1,39 @@
-# npm pwr
+<h1 align="center">pwr</h1>
 
-[![Build Status](https://travis-ci.org/jesusprubio/pwr.svg?branch=master)](https://travis-ci.org/jesusprubio/pwr)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Downloads](https://img.shields.io/npm/dm/pwr.svg)](https://npmjs.com/pwr)
-[![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://github.com/emersion/stability-badges#stable)
+<h4 align="center">
+  ⚡ The (cheated) interactive CLI for npm
+</h4>
 
-:zap: The (cheated) interactive CLI for [npm](https://www.npmjs.com). Because the community builds awesome :sparkles: stuff we use every day. But it's not easy to remember their hipsty names (and parameters).
+<div align="center">
+  <img alt="Demo" src="https://media.giphy.com/media/pYyFAHLW0zJL2/giphy.gif" width="40%">
+</div>
+
+<p align="center">
+  <a href="https://travis-ci.org/jesusprubio/pwr">
+    <img alt="Build Status" src="https://travis-ci.org/jesusprubio/pwr.svg?branch=master">
+  </a>
+  <a href="https://www.npmjs.com/pwr">
+    <img alt="Latest version" src="https://img.shields.io/npm/v/pwr.svg">
+  </a>
+  <a href="https://www.npmjs.com/pwr">
+    <img alt="Downloads" src="https://img.shields.io/npm/dm/pwr.svg">
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img alt="Code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+  </a>
+  <img alt="Stability stable" src="https://img.shields.io/badge/stability-stable-green.svg">
+</p>
+<p align="center">
+  <sub>🤙 Ping me on <a href="https://twitter.com/jesusprubio"><code>Twitter</code></a> if you like this project</sub>
+</p>
+
+Because the community builds awesome :sparkles: stuff we use every day. But it's not easy to remember their hipsty names (and parameters).
 
 Moreover I think it could make easier the learning curve for newcomers.
 
-<!-- markdownlint-disable MD033 -->
-<div align="center">
-<p><img src="https://raw.githubusercontent.com/jesusprubio/pwr/master/artifacts/demo.gif" alt="demo"></p>
-<p><sub>:gift: Ping me on <a href="https://twitter.com/jesusprubio"><code>Twitter</code></a> if you like this project</sub></p>
-</div>
-<!-- markdownlint-enable MD033 -->
-
 ## Install & use
 
-:coffee: Install latest [Node.js](https://nodejs.org/download) stable version and:
+:pizza: Install latest [Node.js](https://nodejs.org/download) stable version and:
 
 ```sh
 npm i -g pwr
