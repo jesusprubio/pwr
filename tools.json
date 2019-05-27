@@ -73,11 +73,6 @@
     "pkg": "npm-consider",
     "comm": { "bin": "npm-consider", "args": ["install"] }
   },
-  "license": {
-    "title": "Dependency licenses",
-    "pkg": "license-checker",
-    "comm": { "bin": "license-checker", "args": "--production" }
-  },
   "top": {
     "title": "System monitoring",
     "pkg": "vtop",
