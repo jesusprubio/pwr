@@ -47,8 +47,7 @@
       "message": "package name",
       "initial": "pwr"
     },
-    "comm": { "bin": "npm-name", "args": "NAME" },
-    "fav": true
+    "comm": { "bin": "npm-name", "args": "NAME" }
   },
   "init": {
     "title": "Start a new project",
@@ -110,8 +109,7 @@
         "initial": "jesusprubio/pwr"
       }
     ],
-    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] },
-    "fav": true
+    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] }
   },
   "http": {
     "title": "Start HTTP server",
