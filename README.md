@@ -1,11 +1,11 @@
 <h1 align="center">pwr</h1>
 
 <h4 align="center">
-  ⚡ The (cheated) interactive CLI for npm
+  :zap: The (cheated) interactive CLI for npm
 </h4>
 
 <div align="center">
-  <img alt="Demo" src="https://media.giphy.com/media/pYyFAHLW0zJL2/giphy.gif" width="40%">
+  <img alt="Demo" src="https://media.giphy.com/media/cIERhJw7joBgNWLDn4/giphy.gif" width="60%">
 </div>
 
 <p align="center">
