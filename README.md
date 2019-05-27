@@ -29,8 +29,6 @@
 
 Because the community builds awesome :sparkles: stuff we use every day. But it's not easy to remember their hipsty names (and parameters).
 
-Moreover I think it could make easier the learning curve for newcomers.
-
 ## Install & use
 
 :pizza: Install latest [Node.js](https://nodejs.org/download) stable version and:
