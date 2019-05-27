@@ -18,8 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.0.0] - 2019-05-27
 
-### 🎉 Added
-
 ### ✏️ Changed
 
 - Improvements and fixes in documentation.
