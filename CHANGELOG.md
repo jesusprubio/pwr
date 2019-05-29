@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.1.0] - 2019-05-29
+
+### 🎉 Added
+
+- Package fkill-cli.
+
 ## [1.0.0] - 2019-05-27
 
 ### ✏️ Changed

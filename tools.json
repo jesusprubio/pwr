@@ -38,6 +38,12 @@
     ],
     "fav": true
   },
+  "fkill": {
+    "title": "Kill process",
+    "pkg": "fkill-cli",
+    "comm": { "bin": "fkill" },
+    "fav": true
+  },
   "name": {
     "title": "Check name available",
     "pkg": "npm-name",
