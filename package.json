@@ -53,6 +53,7 @@
     "fast-cli": "^2.3.0",
     "fkill-cli": "^5.2.0",
     "http-server": "^0.11.1",
+    "license": "0.0.3",
     "internal-ip-cli": "^1.0.0",
     "is-online-cli": "^4.0.0",
     "np": "^5.0.2",
