@@ -128,6 +128,21 @@
     "pkg": "share-cli",
     "comm": { "bin": "share", "args": "." }
   },
+  "gitignore": {
+    "title": "Fetch gitignore files for any of your new projects",
+    "pkg": "gitignore",
+    "param": [
+      {
+        "type": "text",
+        "name": "type",
+        "message": "type of gitignore template",
+        "initial": "Node"
+      }
+    ],
+    "comm": [
+      { "bin": "gitignore", "args": "TYPE"  }
+    ]
+  },
   "screenshot": {
     "title": "Take screenshot",
     "pkg": "puppeteer-cli",
