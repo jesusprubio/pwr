@@ -6,7 +6,7 @@
  * This source code is licensed under the MIT License found in
  * the LICENSE.txt file in the root directory of this source tree.
  */
-const { selectTool } = require('../main');
+const { selectTool, generateChoices, createTitle } = require('../main');
 
 jest.mock('prompts');
 // eslint-disable-next-line import/order
@@ -61,5 +61,30 @@ describe('selectTool', () => {
       ],
     );
     expect(a).toBe('extra');
+  });
+});
+
+describe('generateChoices', () => {
+  const tools = {
+    fav: {
+      title: 'fav',
+      pkg: 'fav',
+      fav: true,
+    },
+    more: {
+      title: 'more',
+      pkg: 'more',
+    },
+  };
+  test('group by fav', async () => {
+    const choices = generateChoices(tools);
+    expect(choices.favChoices).toContainEqual({
+      title: createTitle(tools.fav),
+      value: 'fav',
+    });
+    expect(choices.moreChoices).toContainEqual({
+      title: createTitle(tools.more),
+      value: 'more',
+    });
   });
 });
