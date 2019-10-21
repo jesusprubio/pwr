@@ -159,6 +159,18 @@
     ],
     "comm": { "bin": "license", "args": ["-o", "OWNER", "-p", "PROJECT", "-y", "YEAR", "LICENSE"] }
   },
+  "package-json": {
+    "title": "Get the package.json of an npm package",
+    "pkg": "package-json-cli",
+    "param": [
+      {
+        "type": "text",
+        "name": "package",
+        "message": "name of a package from the npm registry",
+        "initial": "ava"
+      }],
+    "comm": { "bin": "package-json", "args": "PACKAGE" }
+  },
   "screenshot": {
     "title": "Take screenshot",
     "pkg": "puppeteer-cli",
