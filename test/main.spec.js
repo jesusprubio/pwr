@@ -6,7 +6,10 @@
  * This source code is licensed under the MIT License found in
  * the LICENSE.txt file in the root directory of this source tree.
  */
-const { selectTool, generateChoices, createTitle } = require('../main');
+
+'use strict';
+
+const { selectTool, generateChoices, createTitle } = require('../bin/main');
 
 jest.mock('prompts');
 // eslint-disable-next-line import/order

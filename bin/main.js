@@ -1,8 +1,20 @@
+/**
+ * @license
+ *
+ * Copyright (c) 2019, Jesús Rubio <jesusprubio@member.fsf.org>
+ *
+ * This source code is licensed under the MIT License found in
+ * the LICENSE.txt file in the root directory of this source tree.
+ */
+
+'use strict';
+
 const path = require('path');
 const prompts = require('prompts');
 const chalk = require('chalk');
 const spawn = require('await-spawn');
 const tlink = require('terminal-link');
+
 const { arrayIt } = require('./utils');
 const { version } = require('../package.json');
 
@@ -116,10 +128,12 @@ async function main(tools) {
   runCmds(arrayIt(comm), params);
 }
 
-exports.main = main;
-exports.selectTool = selectTool;
-exports.runCmds = runCmds;
-exports.fillArgs = fillArgs;
-exports.setBinPath = setBinPath;
-exports.generateChoices = generateChoices;
-exports.createTitle = createTitle;
+module.exports = {
+  main,
+  selectTool,
+  runCmds,
+  fillArgs,
+  setBinPath,
+  generateChoices,
+  createTitle,
+};

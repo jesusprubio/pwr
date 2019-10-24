@@ -93,9 +93,13 @@
       "airbnb-base",
       "prettier"
     ],
+    "plugins": [
+      "jest"
+    ],
     "env": {
       "es6": true,
-      "node": true
+      "node": true,
+      "jest": true
     },
     "rules": {
       "strict": [
@@ -113,5 +117,8 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

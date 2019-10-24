@@ -151,13 +151,13 @@
         "type": "text",
         "name": "owner",
         "message": "the organisation/owner that holds the copy",
-        "initial": "Myself"
+        "initial": "myself"
       },
       {
         "type": "text",
         "name": "project",
         "message": "the name of the project",
-        "initial": "MyProject"
+        "initial": "my-project"
       },
       {
         "type": "text",
@@ -182,7 +182,7 @@
         "type": "text",
         "name": "package",
         "message": "name of a package from the npm registry",
-        "initial": "ava"
+        "initial": "pwr"
       }],
     "comm": { "bin": "package-json", "args": "PACKAGE" }
   },
