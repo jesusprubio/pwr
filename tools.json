@@ -129,7 +129,7 @@
     "comm": { "bin": "share", "args": "." }
   },
   "gitignore": {
-    "title": "Fetch gitignore files for any of your new projects",
+    "title": "Generate a .gitignore file",
     "pkg": "gitignore",
     "param": [
       {
@@ -144,7 +144,7 @@
     ]
   },
   "license": {
-    "title": "Generate s license",
+    "title": "Generate a license file",
     "pkg": "license",
     "param": [
       {
@@ -175,7 +175,7 @@
     "comm": { "bin": "license", "args": ["-o", "OWNER", "-p", "PROJECT", "-y", "YEAR", "LICENSE"] }
   },
   "package-json": {
-    "title": "Get the package.json of an npm package",
+    "title": "Get the package.json of a module",
     "pkg": "package-json-cli",
     "param": [
       {
