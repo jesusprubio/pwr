@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jesusprubio/pwr/pwr.git"
+    "url": "https://github.com/jesusprubio/pwr.git"
   },
   "scripts": {
     "preinstall": "node scripts/echo.js",
