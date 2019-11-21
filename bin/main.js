@@ -15,7 +15,7 @@ const chalk = require('chalk');
 const spawn = require('await-spawn');
 const tlink = require('terminal-link');
 
-const { arrayIt } = require('./utils');
+const { castArray } = require('./utils');
 const { version } = require('../package.json');
 
 function createNPMLink(info) {
@@ -100,7 +100,7 @@ function setBinPath({ argsFilled, cmd }) {
 function fillArgs(params) {
   return cmd => {
     const { args = [] } = cmd;
-    const argsFilled = arrayIt(args)
+    const argsFilled = castArray(args)
       .map(arg => arg.toLowerCase())
       .map(arg => (params[arg] ? params[arg] : arg));
     return { argsFilled, cmd };
@@ -124,8 +124,8 @@ async function main(tools) {
   if (!comm) {
     throw new Error(`Command not found for '${selected}'`);
   }
-  const params = await prompts(arrayIt(param));
-  runCmds(arrayIt(comm), params);
+  const params = await prompts(castArray(param));
+  runCmds(castArray(comm), params);
 }
 
 module.exports = {

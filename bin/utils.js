@@ -9,10 +9,4 @@
 
 'use strict';
 
-exports.arrayIt = arg => {
-  if (arg && !Array.isArray(arg)) {
-    return [arg];
-  }
-
-  return arg;
-};
+exports.castArray = arg => arg && !Array.isArray(arg) ? [arg] : arg;
