@@ -9,61 +9,46 @@
 
 'use strict';
 
-const { selectTool, generateChoices, createTitle } = require('../bin/main');
+const { selectTool, generateChoices } = require('../bin/main');
 
-jest.mock('prompts');
+jest.mock('inquirer');
 // eslint-disable-next-line import/order
-const prompts = require('prompts');
+const inquirer = require('inquirer');
 
 describe('selectTool', () => {
-  test('select a fav', async () => {
-    prompts.mockReturnValueOnce(Promise.resolve({ value: 'test' }));
+  const choices = {
+    fav: [
+      {
+        name: 'test',
+        value: 'test',
+      },
+      {
+        name: 'More ...',
+        value: 'more',
+      },
+    ],
+    more: [
+      {
+        name: 'extra',
+        value: 'extra',
+      },
+    ],
+  };
 
-    const a = await selectTool(
-      [
-        {
-          title: 'test',
-          value: 'test',
-        },
-        {
-          title: 'More ...',
-          value: 'more',
-        },
-      ],
-      [
-        {
-          title: 'extra',
-          value: 'extra',
-        },
-      ],
-    );
-    expect(a).toBe('test');
+  test('select a fav', async () => {
+    inquirer.prompt.mockReturnValueOnce(Promise.resolve({ value: 'test' }));
+
+    const tool = await selectTool(choices);
+    expect(tool).toBe('test');
   });
 
   test('select other', async () => {
-    prompts
+    inquirer.prompt
       .mockReturnValueOnce(Promise.resolve({ value: 'more' }))
       .mockReturnValueOnce(Promise.resolve({ value: 'extra' }));
 
-    const a = await selectTool(
-      [
-        {
-          title: 'test',
-          value: 'test',
-        },
-        {
-          title: 'More ...',
-          value: 'more',
-        },
-      ],
-      [
-        {
-          title: 'extra',
-          value: 'extra',
-        },
-      ],
-    );
-    expect(a).toBe('extra');
+    const tool = await selectTool(choices);
+    expect(tool).toBe('extra');
   });
 });
 
@@ -79,15 +64,14 @@ describe('generateChoices', () => {
       pkg: 'more',
     },
   };
+
   test('group by fav', async () => {
     const choices = generateChoices(tools);
-    expect(choices.favChoices).toContainEqual({
-      title: createTitle(tools.fav),
-      value: 'fav',
-    });
-    expect(choices.moreChoices).toContainEqual({
-      title: createTitle(tools.more),
-      value: 'more',
-    });
+    expect(
+      choices.fav.find(({ name }) => name.includes('npmjs.com/package/fav')),
+    ).toBeTruthy();
+    expect(
+      choices.more.find(({ name }) => name.includes('npmjs.com/package/more')),
+    ).toBeTruthy();
   });
 });

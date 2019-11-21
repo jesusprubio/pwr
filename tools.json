@@ -2,20 +2,20 @@
   "scripts": {
     "title": "Project scripts",
     "pkg": "ntl",
-    "comm": { "bin": "ntl" },
+    "comm": { "bin": "npm-tasklist", "pkg": "ntl" },
     "fav": true
   },
   "install": {
     "title": "Find/install packages",
     "pkg": "emma-cli",
-    "comm": { "bin": "emma" },
+    "comm": { "bin": "emma", "pkg": "emma-cli" },
     "fav": true
   },
   "clean": {
     "title": "Clean lock file/node_modules",
     "pkg": "del-nm-cli",
     "comm": [
-      { "bin": "del-nm" },
+      { "bin": "del-nm", "pkg": "del-nm-cli" },
       { "bin": "npm", "args": "i" }
     ],
     "fav": true
@@ -41,26 +41,26 @@
   "fkill": {
     "title": "Kill process",
     "pkg": "fkill-cli",
-    "comm": { "bin": "fkill" },
+    "comm": { "bin": "fkill", "pkg": "fkill-cli" },
     "fav": true
   },
   "name": {
     "title": "Check name available",
-    "pkg": "npm-name",
+    "pkg": "npm-name-cli",
     "param": {
-      "type": "text",
+      "type": "input",
       "name": "name",
       "message": "package name",
-      "initial": "pwr"
+      "default": "pwr"
     },
-    "comm": { "bin": "npm-name", "args": "NAME" }
+    "comm": { "bin": "npm-name", "args": "NAME", "pkg": "npm-name-cli" }
   },
   "init": {
     "title": "Start a new project",
     "pkg": "generator-nm",
     "comm": [
       { "bin": "yo", "args": "nm" },
-      { "bin": "open-editor", "args": "." }
+      { "bin": "open-editor", "args": ".", "pkg": "open-editor-cli" }
     ]
   },
   "coverage": {
@@ -87,31 +87,35 @@
     "title": "Network information",
     "pkg": "fast-cli",
     "comm": [
-      { "bin": "is-online" },
-      { "bin": "internal-ip" },
-      { "bin": "public-ip" },
-      { "bin": "fast", "args": "--upload" }
+      { "bin": "is-online", "pkg": "is-online-cli" },
+      { "bin": "internal-ip", "pkg": "internal-ip-cli" },
+      { "bin": "public-ip", "pkg": "public-ip-cli" },
+      { "bin": "fast", "args": "--upload", "pkg": "fast-cli" }
     ]
   },
   "labels": {
     "title": "Add GitHub labels",
     "pkg": "copy-github-labels-cli",
     "param": [{
-      "type": "text",
+      "type": "input",
       "name": "token",
       "message": "personal access token"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "to",
       "message": "repo to change",
-      "initial": "username/repo"
+      "default": "username/repo"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "from",
       "message": "repo to get the labels",
-      "initial": "jesusprubio/pwr"
+      "default": "jesusprubio/pwr"
     }],
-    "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] }
+    "comm": {
+      "bin": "copy-github-labels",
+      "args": ["-t", "TOKEN", "FROM", "TO"],
+      "pkg": "copy-github-labels-cli"
+    }
   },
   "http": {
     "title": "Start HTTP server",
@@ -122,74 +126,81 @@
   "share": {
     "title": "Share actual folder online",
     "pkg": "share-cli",
-    "comm": { "bin": "share", "args": "." }
+    "comm": { "bin": "share", "args": ".", "pkg": "share-cli" }
   },
   "gitignore": {
     "title": "Generate a .gitignore file",
     "pkg": "gitignore",
     "param": [{
-      "type": "text",
+      "type": "input",
       "name": "type",
       "message": "type of gitignore template",
-      "initial": "Node"
+      "default": "Node"
     }],
-    "comm": [
-      { "bin": "gitignore", "args": "TYPE"  }
-    ]
+    "comm": { "bin": "gitignore", "args": "TYPE"  }
   },
   "license": {
     "title": "Generate a license file",
     "pkg": "license",
     "param": [{
-      "type": "text",
+      "type": "input",
       "name": "owner",
       "message": "the organisation/owner that holds the copy",
-      "initial": "myself"
+      "default": "myself"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "project",
       "message": "the name of the project",
-      "initial": "my-project"
+      "default": "my-project"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "year",
       "message": "copyright year",
-      "initial": "2020"
+      "default": "2020"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "license",
       "message": "license type",
-      "initial": "mit"
+      "default": "mit"
     }],
-    "comm": { "bin": "license", "args": ["-o", "OWNER", "-p", "PROJECT", "-y", "YEAR", "LICENSE"] }
+    "comm": {
+      "bin": "license",
+      "args": ["-o", "OWNER", "-p", "PROJECT", "-y", "YEAR", "LICENSE"]
+    }
   },
   "package-json": {
     "title": "Get the package.json of a module",
     "pkg": "package-json-cli",
     "param": [{
-      "type": "text",
+      "type": "input",
       "name": "package",
       "message": "name of a package from the npm registry",
-      "initial": "pwr"
+      "default": "pwr"
     }],
-    "comm": { "bin": "package-json", "args": "PACKAGE" }
+    "comm": {
+      "bin": "package-json",
+      "args": "PACKAGE",
+      "pkg": "package-json-cli"
+    }
   },
   "screenshot": {
     "title": "Take screenshot",
     "pkg": "puppeteer-cli",
     "param": [{
-      "type": "text",
+      "type": "input",
       "name": "url",
       "message": "url of website to take screenshot",
-      "initial": "https://github.com/jesusprubio/pwr"
+      "default": "https://github.com/jesusprubio/pwr"
     }, {
-      "type": "text",
+      "type": "input",
       "name": "path",
       "message": "name of the file",
-      "initial": "shot.png"
+      "default": "shot.png"
     }],
-    "comm": [
-      { "bin": "puppeteer", "args": ["screenshot", "URL", "PATH"] }
-    ]
+    "comm": {
+      "bin": "puppeteer",
+      "args": ["screenshot", "URL", "PATH"],
+      "pkg": "puppeteer-cli"
+    }
   }
 }
