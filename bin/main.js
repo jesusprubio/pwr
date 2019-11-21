@@ -76,7 +76,7 @@ async function selectTool(choices) {
   return selected.value;
 }
 
-function runCommands(commands, params) {
+function runCommands(commands, params = {}) {
   commands = commands.map(({ args = [], ...cmd }) => {
     args = castArray(args).map(arg => {
       arg = arg.toLowerCase();
@@ -112,7 +112,7 @@ async function main(tools) {
   if (!comm) {
     throw new Error(`Command not found for '${selected}'`);
   }
-  const params = param ? await prompt(castArray(param)) : {};
+  const params = param ? await prompt(castArray(param)) : undefined;
   runCommands(castArray(comm), params);
 }
 

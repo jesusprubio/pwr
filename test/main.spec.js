@@ -9,11 +9,26 @@
 
 'use strict';
 
-const { selectTool, generateChoices } = require('../bin/main');
+const globalDirs = require('global-dirs');
+const path = require('path');
+
+const npm = require.resolve(path.join(globalDirs.npm.binaries, 'npm'));
+const mockNpx = jest.fn();
+mockNpx.parseArgs = jest.fn();
 
 jest.mock('inquirer');
-// eslint-disable-next-line import/order
+jest.mock('await-spawn', () => jest.fn());
+jest.mock('import-from', () => (fromDirectory, moduleId) => {
+  if (moduleId === 'libnpx') return mockNpx;
+  return jest.requireActual('import-from')(fromDirectory, moduleId);
+});
+
+/* eslint-disable import/order */
 const inquirer = require('inquirer');
+const spawn = require('await-spawn');
+/* eslint-enable */
+
+const { runCommands, generateChoices, selectTool } = require('../bin/main');
 
 describe('selectTool', () => {
   const choices = {
@@ -73,5 +88,29 @@ describe('generateChoices', () => {
     expect(
       choices.more.find(({ name }) => name.includes('npmjs.com/package/more')),
     ).toBeTruthy();
+  });
+});
+
+describe('runCommands', () => {
+  const tools = {
+    publish: {
+      title: 'Publish to npm',
+      pkg: 'np',
+      comm: [{ bin: 'npm', args: ['pack', '--dry-run'] }, { bin: 'np' }],
+      fav: true,
+    },
+  };
+
+  test('publish', async () => {
+    await runCommands(tools.publish.comm);
+    expect(spawn).toHaveBeenCalledWith(
+      process.argv0,
+      [npm, 'pack', '--dry-run'],
+      { stdio: 'inherit' },
+    );
+    expect(mockNpx.parseArgs).toHaveBeenCalledWith(
+      [...process.argv, '--quiet', 'np'],
+      npm,
+    );
   });
 });
