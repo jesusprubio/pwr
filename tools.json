@@ -96,25 +96,21 @@
   "labels": {
     "title": "Add GitHub labels",
     "pkg": "copy-github-labels-cli",
-    "param": [
-      {
-        "type": "text",
-        "name": "token",
-        "message": "personal access token"
-      },
-      {
-        "type": "text",
-        "name": "to",
-        "message": "repo to change",
-        "initial": "username/repo"
-      },
-      {
-        "type": "text",
-        "name": "from",
-        "message": "repo to get the labels",
-        "initial": "jesusprubio/pwr"
-      }
-    ],
+    "param": [{
+      "type": "text",
+      "name": "token",
+      "message": "personal access token"
+    }, {
+      "type": "text",
+      "name": "to",
+      "message": "repo to change",
+      "initial": "username/repo"
+    }, {
+      "type": "text",
+      "name": "from",
+      "message": "repo to get the labels",
+      "initial": "jesusprubio/pwr"
+    }],
     "comm": { "bin": "copy-github-labels", "args": ["-t", "TOKEN", "FROM", "TO"] }
   },
   "http": {
@@ -131,14 +127,12 @@
   "gitignore": {
     "title": "Generate a .gitignore file",
     "pkg": "gitignore",
-    "param": [
-      {
-        "type": "text",
-        "name": "type",
-        "message": "type of gitignore template",
-        "initial": "Node"
-      }
-    ],
+    "param": [{
+      "type": "text",
+      "name": "type",
+      "message": "type of gitignore template",
+      "initial": "Node"
+    }],
     "comm": [
       { "bin": "gitignore", "args": "TYPE"  }
     ]
@@ -146,63 +140,54 @@
   "license": {
     "title": "Generate a license file",
     "pkg": "license",
-    "param": [
-      {
-        "type": "text",
-        "name": "owner",
-        "message": "the organisation/owner that holds the copy",
-        "initial": "myself"
-      },
-      {
-        "type": "text",
-        "name": "project",
-        "message": "the name of the project",
-        "initial": "my-project"
-      },
-      {
-        "type": "text",
-        "name": "year",
-        "message": "copyright year",
-        "initial": "2020"
-      },
-      {
-        "type": "text",
-        "name": "license",
-        "message": "license type",
-        "initial": "mit"
-      }
-    ],
+    "param": [{
+      "type": "text",
+      "name": "owner",
+      "message": "the organisation/owner that holds the copy",
+      "initial": "myself"
+    }, {
+      "type": "text",
+      "name": "project",
+      "message": "the name of the project",
+      "initial": "my-project"
+    }, {
+      "type": "text",
+      "name": "year",
+      "message": "copyright year",
+      "initial": "2020"
+    }, {
+      "type": "text",
+      "name": "license",
+      "message": "license type",
+      "initial": "mit"
+    }],
     "comm": { "bin": "license", "args": ["-o", "OWNER", "-p", "PROJECT", "-y", "YEAR", "LICENSE"] }
   },
   "package-json": {
     "title": "Get the package.json of a module",
     "pkg": "package-json-cli",
-    "param": [
-      {
-        "type": "text",
-        "name": "package",
-        "message": "name of a package from the npm registry",
-        "initial": "pwr"
-      }],
+    "param": [{
+      "type": "text",
+      "name": "package",
+      "message": "name of a package from the npm registry",
+      "initial": "pwr"
+    }],
     "comm": { "bin": "package-json", "args": "PACKAGE" }
   },
   "screenshot": {
     "title": "Take screenshot",
     "pkg": "puppeteer-cli",
-    "param": [
-      {
-        "type": "text",
-        "name": "url",
-        "message": "url of website to take screenshot",
-        "initial": "https://github.com/jesusprubio/pwr"
-      },
-      {
-        "type": "text",
-        "name": "path",
-        "message": "name of the file",
-        "initial": "shot.png"
-      }
-    ],
+    "param": [{
+      "type": "text",
+      "name": "url",
+      "message": "url of website to take screenshot",
+      "initial": "https://github.com/jesusprubio/pwr"
+    }, {
+      "type": "text",
+      "name": "path",
+      "message": "name of the file",
+      "initial": "shot.png"
+    }],
     "comm": [
       { "bin": "puppeteer", "args": ["screenshot", "URL", "PATH"] }
     ]
