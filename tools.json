@@ -59,7 +59,7 @@
     "title": "Start a new project",
     "pkg": "generator-nm",
     "comm": [
-      { "bin": "yo", "args": "nm" },
+      { "bin": "yo", "args": "nm", "pkg": "generator-nm" },
       { "bin": "open-editor", "args": ".", "pkg": "open-editor-cli" }
     ]
   },

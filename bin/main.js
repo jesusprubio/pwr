@@ -91,7 +91,9 @@ function runCommands(commands, params) {
       return spawn(process.argv0, [npm, ...args], { stdio: 'inherit' });
     }
     const npxArgs = ['--quiet'];
-    if (bin !== pkg) {
+    if (bin === 'yo') {
+      npxArgs.push(...['-p', 'yo', '-p', pkg, '--', 'yo', ...args]);
+    } else if (bin !== pkg) {
       npxArgs.push(...['-p', pkg, '-c', bin, ...args]);
     } else {
       npxArgs.push(...[bin, ...args]);
