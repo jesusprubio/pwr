@@ -29,6 +29,7 @@ const spawn = require('await-spawn');
 /* eslint-enable */
 
 const { runCommands, generateChoices, selectTool } = require('../bin/main');
+const { peerDependencies } = require('../package.json');
 
 describe('selectTool', () => {
   const choices = {
@@ -108,8 +109,12 @@ describe('runCommands', () => {
       [npm, 'pack', '--dry-run'],
       { stdio: 'inherit' },
     );
+    const [, comm] = tools.publish.comm;
+    const pkg = comm.bin;
+    const pkgVersion = peerDependencies[pkg];
+    const spec = [pkg, pkgVersion].join('@');
     expect(mockNpx.parseArgs).toHaveBeenCalledWith(
-      [...process.argv, '--quiet', 'np'],
+      [...process.argv, '--quiet', spec],
       npm,
     );
   });
