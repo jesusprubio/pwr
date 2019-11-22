@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.1] - 2019-11-22
+
+### ✏️ Changed
+
+- Use tool version from `peerDependencies`.
+
 ## [1.3.0] - 2019-11-22
 
 ### 🎉 Added
@@ -95,7 +101,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial features.
 
-[unreleased]: https://github.com/jesusprubio/pwr/compare/1.2.1...HEAD
+[unreleased]: https://github.com/jesusprubio/pwr/compare/1.3.1...HEAD
+[1.3.1]: https://github.com/jesusprubio/pwr/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/jesusprubio/pwr/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/jesusprubio/pwr/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/jesusprubio/pwr/compare/1.1.0...1.2.0
