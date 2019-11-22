@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.3.0] - 2019-11-22
+
+### 🎉 Added
+
+- `libnpx` support to avoid the huge dependency tree.
+
+### ✏️ Changed
+
+- From `prompts` to `inquirer`.
+
 ## [1.2.1] - 2019-10-24
 
 ### ✏️ Changed
@@ -46,7 +56,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### ✏️ Changed
 
 - Improvements and fixes in documentation.
-- npm-consider instead npm-analyze and license-checker.
+- `npm-consider` instead `npm-analyze` and `license-checker`.
 
 ### 👾 Security
 
@@ -54,7 +64,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### ❌ Removed
 
-- Terminalizer due to problems installing in Node.js v12 under GNU/Linux.
+- `terminalizer` due to problems installing in Node.js v12 under GNU/Linux.
 
 ## [0.2.0] - 2019-02-30
 
@@ -86,6 +96,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial features.
 
 [unreleased]: https://github.com/jesusprubio/pwr/compare/1.2.1...HEAD
+[1.3.0]: https://github.com/jesusprubio/pwr/compare/1.2.1...1.3.0
 [1.2.1]: https://github.com/jesusprubio/pwr/compare/1.2.0...1.2.1
 [1.2.0]: https://github.com/jesusprubio/pwr/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/jesusprubio/pwr/compare/1.0.0...1.1.0
