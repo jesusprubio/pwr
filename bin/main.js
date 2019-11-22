@@ -9,131 +9,116 @@
 
 'use strict';
 
-const path = require('path');
-const prompts = require('prompts');
 const chalk = require('chalk');
+const globalDirs = require('global-dirs');
+const importFrom = require('import-from');
+const path = require('path');
+const pEachSeries = require('p-each-series');
+const { prompt } = require('inquirer');
+const terminalLink = require('terminal-link');
 const spawn = require('await-spawn');
-const tlink = require('terminal-link');
+const { URL } = require('url');
 
-const { arrayIt } = require('./utils');
+const { castArray } = require('./utils');
 const { version } = require('../package.json');
 
-function createNPMLink(info) {
-  return tlink(
-    chalk.cyan(info.pkg),
-    `https://www.npmjs.com/package/${info.pkg}`,
-  );
-}
+const npm = require.resolve(path.join(globalDirs.npm.binaries, 'npm'));
+const npx = importFrom(path.join(globalDirs.npm.packages, 'npm'), 'libnpx');
 
-function createTitle(info) {
-  const title = chalk.bold(info.title);
-  const link = createNPMLink(info);
-  return `${title} (${link})`;
-}
+const hasProp = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
 
 function generateChoices(tools) {
-  const { fav: favChoices, more: moreChoices } = Object.entries(tools)
-    .map(([value, info]) => {
-      return {
-        payload: {
-          title: createTitle(info),
-          value,
-        },
-        fav: info.fav,
-      };
+  return Object.entries(tools)
+    .map(([value, { fav, title, pkg }]) => {
+      const url = new URL(`/package/${pkg}`, 'https://npmjs.com');
+      const name = chalk`{bold ${title}} ({cyan ${terminalLink(pkg, url)}})`;
+      return { fav, name, value };
     })
     .reduce(
-      ({ fav, more }, tool) => {
-        if (tool.fav) {
-          return { fav: [...fav, tool.payload], more };
+      (acc, { fav, ...tool }) => {
+        if (fav) {
+          acc.fav.push(tool);
+        } else {
+          acc.more.push(tool);
         }
-        return { more: [...more, tool.payload], fav };
+        return acc;
       },
-      {
-        fav: [],
-        more: [],
-      },
+      { fav: [], more: [] },
     );
-
-  return {
-    favChoices,
-    moreChoices,
-  };
 }
 
-async function selectTool(favChoices, moreChoices) {
+async function selectTool(choices) {
   const more = {
-    title: 'More ...',
+    name: 'More ...',
     value: 'more',
   };
-  const favSelection = await prompts([
+  const options = {
+    type: 'list',
+    name: 'value',
+    message: chalk`{yellow ⚡} {magenta.bold pwr}`,
+    suffix: chalk.dim(` 'esc' to quit (v${version})`),
+  };
+  let selected = await prompt([
     {
-      type: 'select',
-      name: 'value',
-      message: `${chalk.yellow('⚡')} ${chalk.magenta.bold(`pwr`)}`,
-      choices: [...favChoices, more],
-      hint: `'esc' to quit (v${version})`,
+      ...options,
+      choices: [...choices.fav, more],
     },
   ]);
-  if (favSelection.value && favSelection.value === more.value) {
-    const moreSelection = await prompts([
+  if (selected.value && selected.value === more.value) {
+    selected = await prompt([
       {
-        type: 'select',
-        name: 'value',
-        message: `${chalk.yellow('⚡')} ${chalk.magenta.bold(`pwr`)}`,
-        choices: moreChoices,
-        hint: `'esc' to quit (v${version})`,
+        ...options,
+        choices: choices.more,
       },
     ]);
-    return moreSelection.value;
+    return selected.value;
   }
-  return favSelection.value;
+  return selected.value;
 }
 
-function setBinPath({ argsFilled, cmd }) {
-  const { bin } = cmd;
-  const binPath =
-    bin === 'npm' ? bin : path.resolve(__dirname, '../node_modules/.bin', bin);
-  return { binPath, argsFilled };
-}
-
-function fillArgs(params) {
-  return cmd => {
-    const { args = [] } = cmd;
-    const argsFilled = arrayIt(args)
-      .map(arg => arg.toLowerCase())
-      .map(arg => (params[arg] ? params[arg] : arg));
-    return { argsFilled, cmd };
-  };
-}
-
-function runCmds(commands, params) {
-  commands
-    .map(fillArgs(params))
-    .map(setBinPath)
-    .forEach(async ({ binPath, argsFilled }) => {
-      // Will use process .stdout, .stdin, .stderr.
-      await spawn(binPath, argsFilled, { stdio: 'inherit' });
+function runCommands(commands, params = {}) {
+  commands = commands.map(({ args = [], ...cmd }) => {
+    args = castArray(args).map(arg => {
+      arg = arg.toLowerCase();
+      return hasProp(params, arg) ? params.arg : arg;
     });
+    return { ...cmd, args };
+  });
+  return pEachSeries(commands, ({ bin, args, pkg = bin }) => {
+    if (bin === 'npm') {
+      // eslint-disable-next-line no-console
+      console.error(chalk.dim('\n> npm %s'), args.join(' '));
+      return spawn(process.argv0, [npm, ...args], { stdio: 'inherit' });
+    }
+    const npxArgs = ['--quiet'];
+    if (bin === 'yo') {
+      npxArgs.push(...['-p', 'yo', '-p', pkg, '--', 'yo', ...args]);
+    } else if (bin !== pkg) {
+      npxArgs.push(...['-p', pkg, '-c', bin, ...args]);
+    } else {
+      npxArgs.push(...[bin, ...args]);
+    }
+    // eslint-disable-next-line no-console
+    console.error(chalk.dim('\n> npx %s'), npxArgs.join(' '));
+    args = npx.parseArgs([...process.argv, ...npxArgs], npm);
+    return npx(args);
+  });
 }
 
 async function main(tools) {
-  const { favChoices, moreChoices } = generateChoices(tools);
-  const selected = await selectTool(favChoices, moreChoices);
+  const choices = generateChoices(tools);
+  const selected = await selectTool(choices);
   const { param, comm } = tools[selected];
   if (!comm) {
     throw new Error(`Command not found for '${selected}'`);
   }
-  const params = await prompts(arrayIt(param));
-  runCmds(arrayIt(comm), params);
+  const params = param ? await prompt(castArray(param)) : undefined;
+  runCommands(castArray(comm), params);
 }
 
 module.exports = {
   main,
-  selectTool,
-  runCmds,
-  fillArgs,
-  setBinPath,
+  runCommands,
   generateChoices,
-  createTitle,
+  selectTool,
 };

@@ -16,8 +16,4 @@ const { main } = require('./main');
 const tools = require('../tools');
 
 escExit();
-
-main(tools)
-  // The CLIs print their own output.
-  .then(() => {})
-  .catch();
+main(tools);

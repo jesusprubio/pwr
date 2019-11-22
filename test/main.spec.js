@@ -9,61 +9,61 @@
 
 'use strict';
 
-const { selectTool, generateChoices, createTitle } = require('../bin/main');
+const globalDirs = require('global-dirs');
+const path = require('path');
 
-jest.mock('prompts');
-// eslint-disable-next-line import/order
-const prompts = require('prompts');
+const npm = require.resolve(path.join(globalDirs.npm.binaries, 'npm'));
+const mockNpx = jest.fn();
+mockNpx.parseArgs = jest.fn();
+
+jest.mock('inquirer');
+jest.mock('await-spawn', () => jest.fn());
+jest.mock('import-from', () => (fromDirectory, moduleId) => {
+  if (moduleId === 'libnpx') return mockNpx;
+  return jest.requireActual('import-from')(fromDirectory, moduleId);
+});
+
+/* eslint-disable import/order */
+const inquirer = require('inquirer');
+const spawn = require('await-spawn');
+/* eslint-enable */
+
+const { runCommands, generateChoices, selectTool } = require('../bin/main');
 
 describe('selectTool', () => {
-  test('select a fav', async () => {
-    prompts.mockReturnValueOnce(Promise.resolve({ value: 'test' }));
+  const choices = {
+    fav: [
+      {
+        name: 'test',
+        value: 'test',
+      },
+      {
+        name: 'More ...',
+        value: 'more',
+      },
+    ],
+    more: [
+      {
+        name: 'extra',
+        value: 'extra',
+      },
+    ],
+  };
 
-    const a = await selectTool(
-      [
-        {
-          title: 'test',
-          value: 'test',
-        },
-        {
-          title: 'More ...',
-          value: 'more',
-        },
-      ],
-      [
-        {
-          title: 'extra',
-          value: 'extra',
-        },
-      ],
-    );
-    expect(a).toBe('test');
+  test('select a fav', async () => {
+    inquirer.prompt.mockReturnValueOnce(Promise.resolve({ value: 'test' }));
+
+    const tool = await selectTool(choices);
+    expect(tool).toBe('test');
   });
 
   test('select other', async () => {
-    prompts
+    inquirer.prompt
       .mockReturnValueOnce(Promise.resolve({ value: 'more' }))
       .mockReturnValueOnce(Promise.resolve({ value: 'extra' }));
 
-    const a = await selectTool(
-      [
-        {
-          title: 'test',
-          value: 'test',
-        },
-        {
-          title: 'More ...',
-          value: 'more',
-        },
-      ],
-      [
-        {
-          title: 'extra',
-          value: 'extra',
-        },
-      ],
-    );
-    expect(a).toBe('extra');
+    const tool = await selectTool(choices);
+    expect(tool).toBe('extra');
   });
 });
 
@@ -79,15 +79,38 @@ describe('generateChoices', () => {
       pkg: 'more',
     },
   };
+
   test('group by fav', async () => {
     const choices = generateChoices(tools);
-    expect(choices.favChoices).toContainEqual({
-      title: createTitle(tools.fav),
-      value: 'fav',
-    });
-    expect(choices.moreChoices).toContainEqual({
-      title: createTitle(tools.more),
-      value: 'more',
-    });
+    expect(
+      choices.fav.find(({ name }) => name.includes('npmjs.com/package/fav')),
+    ).toBeTruthy();
+    expect(
+      choices.more.find(({ name }) => name.includes('npmjs.com/package/more')),
+    ).toBeTruthy();
+  });
+});
+
+describe('runCommands', () => {
+  const tools = {
+    publish: {
+      title: 'Publish to npm',
+      pkg: 'np',
+      comm: [{ bin: 'npm', args: ['pack', '--dry-run'] }, { bin: 'np' }],
+      fav: true,
+    },
+  };
+
+  test('publish', async () => {
+    await runCommands(tools.publish.comm);
+    expect(spawn).toHaveBeenCalledWith(
+      process.argv0,
+      [npm, 'pack', '--dry-run'],
+      { stdio: 'inherit' },
+    );
+    expect(mockNpx.parseArgs).toHaveBeenCalledWith(
+      [...process.argv, '--quiet', 'np'],
+      npm,
+    );
   });
 });
