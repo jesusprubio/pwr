@@ -20,7 +20,7 @@ const spawn = require('await-spawn');
 const { URL } = require('url');
 
 const { castArray } = require('./utils');
-const { version } = require('../package.json');
+const { version, peerDependencies } = require('../package.json');
 
 const npm = require.resolve(path.join(globalDirs.npm.binaries, 'npm'));
 const npx = importFrom(path.join(globalDirs.npm.packages, 'npm'), 'libnpx');
@@ -91,12 +91,14 @@ function runCommands(commands, params = {}) {
       return spawn(process.argv0, [npm, ...args], { stdio: 'inherit' });
     }
     const npxArgs = ['--quiet'];
+    const pkgVersion = peerDependencies[pkg];
+    const spec = [pkg, pkgVersion].join('@');
     if (bin === 'yo') {
-      npxArgs.push(...['-p', 'yo', '-p', pkg, '--', 'yo', ...args]);
+      npxArgs.push(...['-p', 'yo', '-p', spec, '--', bin, ...args]);
     } else if (bin !== pkg) {
-      npxArgs.push(...['-p', pkg, '-c', bin, ...args]);
+      npxArgs.push(...['-p', spec, '--', bin, ...args]);
     } else {
-      npxArgs.push(...[bin, ...args]);
+      npxArgs.push(...[spec, ...args]);
     }
     // eslint-disable-next-line no-console
     console.error(chalk.dim('\n> npx %s'), npxArgs.join(' '));
