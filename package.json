@@ -33,12 +33,10 @@
     "pwr": "./bin/index.js"
   },
   "scripts": {
-    "audit": "audit-ci",
     "format": "prettier --write '**/*.js'",
     "lint": "eslint .",
     "precommit": "lint-staged",
     "start": "node bin",
-    "pretest": "npm run audit",
     "test": "jest"
   },
   "lint-staged": {
@@ -92,7 +90,6 @@
     "terminal-link": "^2.0.0"
   },
   "devDependencies": {
-    "audit-ci": "^2.4.2",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
