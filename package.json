@@ -86,6 +86,7 @@
     "global-dirs": "^2.0.1",
     "import-from": "^3.0.0",
     "inquirer": "^7.0.0",
+    "npkill": "^0.6.0",
     "p-each-series": "^2.1.0",
     "terminal-link": "^2.0.0"
   },
